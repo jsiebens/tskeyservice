@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 const BEARER_SCHEMA = "Bearer "
@@ -44,7 +45,7 @@ func start() error {
 		return err
 	}
 
-	expirySeconds := uint64(300)
+	expiry := 5 * time.Minute
 	capabilities := tailscale.KeyCapabilities{}
 	capabilities.Devices.Create.Reusable = false
 	capabilities.Devices.Create.Ephemeral = true
@@ -74,7 +75,7 @@ func start() error {
 		}
 
 		if ok, _ := evaluator.Evaluate(claims); ok {
-			key, err := client.CreateKey(ctx, capabilities, tailscale.WithKeyExpirySeconds(expirySeconds))
+			key, err := client.CreateKey(ctx, capabilities, tailscale.WithKeyExpiry(expiry))
 			if err != nil {
 				return echo.ErrInternalServerError
 			}

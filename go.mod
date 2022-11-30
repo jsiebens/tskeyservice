@@ -2,13 +2,11 @@ module github.com/jsiebens/tskeyservice
 
 go 1.19
 
-replace github.com/tailscale/tailscale-client-go v1.7.0 => github.com/jsiebens/tailscale-client-go v0.0.0-20221108073316-a64d102ba541
-
 require (
 	github.com/coreos/go-oidc/v3 v3.4.0
 	github.com/hashicorp/go-bexpr v0.1.11
 	github.com/labstack/echo/v4 v4.9.1
-	github.com/tailscale/tailscale-client-go v1.7.0
+	github.com/tailscale/tailscale-client-go v1.6.1-0.20221130102115-2b0c25ac47da
 )
 
 require (
