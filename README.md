@@ -63,7 +63,7 @@ jobs:
         env:
           TSKEYSERVICE_URL: "<your tskeservice url e.g. https://tskeys.example.com/key>"
         run: |
-          OIDC_TOKEN=$(curl -sLS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=brink" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" | jq -j '.value')
+          OIDC_TOKEN=$(curl -sLS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=tskeyservice" -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" | jq -j '.value')
           TS_KEY=$(curl -sLS $TSKEYSERVICE_URL -H "User-Agent: actions/oidc-client" -H "Authorization: Bearer $OIDC_TOKEN" | jq -j '.key')
           echo "TAILSCALE_AUTHKEY=$TS_KEY" >> $GITHUB_ENV
           
