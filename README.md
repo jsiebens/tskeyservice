@@ -21,7 +21,7 @@ Configuration is done by settings environment variables:
 - TS_API_KEY: a Tailscale API key
 - TS_KEYS_ISSUER: a trusted OIDC Issuer url (e.g. https://token.actions.githubusercontent.com)
 - TS_KEYS_TAGS: comma-separated list of ACL tags
-- TS_KEY_BEXPR: a boolean expression to filter OIDC tokens (based on claims) when creating auth keys
+- TS_KEYS_BEXPR: a boolean expression to filter OIDC tokens (based on claims) when creating auth keys
 
 The last setting is quit important as it allows you to filter OIDC tokens and only creating auth keys when the token has some certain claims.
 
@@ -31,7 +31,7 @@ In case of GitHub Action, the issued token has a `repository` claim.
 The following expression will only create auth keys for a workflow from this repository:
 
 ```shell
-export TS_KEY_BEXPR='repository == "jsiebens/tskeys-example"'
+export TS_KEYS_BEXPR='repository == "jsiebens/tskeys-example"'
 ```
 
 The boolean expression is implemented using the [HashiCorp go-bexpr](https://github.com/hashicorp/go-bexpr) library
