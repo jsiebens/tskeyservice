@@ -38,7 +38,7 @@ The boolean expression is implemented using the [HashiCorp go-bexpr](https://git
 
 ## Deployment
 
-When using in GitHub Actions, this service should be publicly available. E.g. on Google Cloud Run of [fly.io](https://fly.io).
+When using in GitHub Actions, this service should be publicly available. E.g. on Google Cloud Run or [fly.io](https://fly.io).
 
 A Docker image is available at `ghcr.io/jsiebens/tskeyservice`
 
